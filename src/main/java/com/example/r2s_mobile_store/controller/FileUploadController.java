@@ -71,7 +71,7 @@ public class FileUploadController {
                 .body(file);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/")
     public ResponseEntity<List<String>> handleFileUpload(@RequestParam("file") List<MultipartFile> files) {
         List<String> fileDetails = new ArrayList<>();

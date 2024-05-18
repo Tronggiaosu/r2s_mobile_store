@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.r2s_mobile_store.dto.PaginationDTO;
 import com.example.r2s_mobile_store.dto.ProductDTO;
 import com.example.r2s_mobile_store.dto.ProductUpdateDTO;
 import com.example.r2s_mobile_store.dto.ThumbnailDTO;
@@ -52,6 +53,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().stream()
                 .map(productMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public PaginationDTO findAllProductPaginate(int no, int limit) throws ProductNotFoundException {
+
     }
 
     @Transactional(readOnly = true)

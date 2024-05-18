@@ -2,6 +2,7 @@ package com.example.r2s_mobile_store.service;
 
 import java.util.List;
 
+import com.example.r2s_mobile_store.dto.PaginationDTO;
 import com.example.r2s_mobile_store.dto.ProductDTO;
 import com.example.r2s_mobile_store.dto.ProductUpdateDTO;
 import com.example.r2s_mobile_store.exception.CategoryNotFoundException;
@@ -9,6 +10,8 @@ import com.example.r2s_mobile_store.exception.ProductNotFoundException;
 
 public interface ProductService {
     List<ProductDTO> findAll();
+
+    PaginationDTO findAllProductPaginate(int no, int limit) throws ProductNotFoundException;
 
     List<ProductDTO> findAllByCategoryId(Long id) throws CategoryNotFoundException;
 
