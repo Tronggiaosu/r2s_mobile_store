@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-R2sMobileStoreApplication<r2s_mobile_store>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.r2s_mobile_store.R2sMobileStoreApplication",
+            "projectName": "r2s_mobile_store",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
