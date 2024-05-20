@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.r2s_mobile_store.constant.ApiUrlConstant;
+import com.example.r2s_mobile_store.constant.PaginateConstant;
 import com.example.r2s_mobile_store.dto.ProductDTO;
 import com.example.r2s_mobile_store.dto.ProductUpdateDTO;
 import com.example.r2s_mobile_store.exception.ProductNotFoundException;
@@ -30,6 +32,17 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<?> getAllProducts() {
         return ResponseEntity.ok(productService.findAll());
+    }
+
+    @GetMapping("/paginate")
+    public ResponseEntity<?> getAllProductPaginate(
+            @RequestParam(defaultValue = PaginateConstant.DEFAULT_PAGE_NUMBER) int no,
+            @RequestParam(defaultValue = PaginateConstant.DEFAULT_PAGE_LIMIT) int limit) {
+        try {
+            return ResponseEntity.ok(productService.findAllProductPaginate(no, limit));
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/category/{categoryId}")

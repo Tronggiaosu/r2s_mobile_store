@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,10 +57,24 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
-    // public PaginationDTO findAllProductPaginate(int no, int limit) throws
-    // ProductNotFoundException {
+    public PaginationDTO findAllProductPaginate(int no, int limit) throws ProductNotFoundException {
+        Page<ProductDTO> productDTOPages = productRepository.findAll(PageRequest.of(no, limit))
+                .map(productMapper::toDTO);
+        if (productDTOPages.getTotalElements() == 0)
+            throw new ProductNotFoundException("Không tìm thấy sản phẩm nào!");
 
-    // }
+        PaginationDTO paginationDTO = new PaginationDTO();
+
+        paginationDTO.setContents(productDTOPages.getContent());
+        paginationDTO.setFirst(productDTOPages.isFirst());
+        paginationDTO.setLast(productDTOPages.isLast());
+        paginationDTO.setTotalPages(productDTOPages.getTotalPages());
+        paginationDTO.setTotalItems(productDTOPages.getTotalElements());
+        paginationDTO.setLimit(productDTOPages.getSize());
+        paginationDTO.setNo(productDTOPages.getNumber());
+
+        return paginationDTO;
+    }
 
     @Transactional(readOnly = true)
     @Override

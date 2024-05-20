@@ -11,8 +11,7 @@ import com.example.r2s_mobile_store.exception.ProductNotFoundException;
 public interface ProductService {
     List<ProductDTO> findAll();
 
-    // PaginationDTO findAllProductPaginate(int no, int limit) throws
-    // ProductNotFoundException;
+    PaginationDTO findAllProductPaginate(int no, int limit) throws ProductNotFoundException;
 
     List<ProductDTO> findAllByCategoryId(Long id) throws CategoryNotFoundException;
 
