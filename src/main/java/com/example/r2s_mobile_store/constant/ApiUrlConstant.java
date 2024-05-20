@@ -10,4 +10,6 @@ public class ApiUrlConstant {
     public static final String THUMBNAIL = API + "/thumbnail";
     public static final String ORDER = API + "/order";
     public static final String ORDER_DETAIL = API + "/order-detail";
+    public static final String UPLOAD = API + "/upload";
+    public static final String PAYMENT = API + "/payment";
 }

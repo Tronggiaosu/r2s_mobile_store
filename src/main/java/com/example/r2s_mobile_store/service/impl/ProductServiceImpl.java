@@ -55,9 +55,10 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
-    public PaginationDTO findAllProductPaginate(int no, int limit) throws ProductNotFoundException {
+    // public PaginationDTO findAllProductPaginate(int no, int limit) throws
+    // ProductNotFoundException {
 
-    }
+    // }
 
     @Transactional(readOnly = true)
     @Override

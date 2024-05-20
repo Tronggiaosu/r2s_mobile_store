@@ -27,8 +27,10 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import com.example.r2s_mobile_store.exception.StorageFileNotFoundException;
 import com.example.r2s_mobile_store.service.StorageService;
 
+import com.example.r2s_mobile_store.constant.ApiUrlConstant;
+
 @RestController
-@RequestMapping("/api/upload")
+@RequestMapping(ApiUrlConstant.UPLOAD)
 @Controller
 public class FileUploadController {
     private final StorageService storageService;
@@ -85,7 +87,7 @@ public class FileUploadController {
         return ResponseEntity.ok().body(fileDetails);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/")
     public ResponseEntity<String> deleteAllFiles() {
         storageService.deleteAll();

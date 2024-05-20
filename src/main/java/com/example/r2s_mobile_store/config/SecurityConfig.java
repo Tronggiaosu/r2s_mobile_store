@@ -63,7 +63,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/thumbnail/**").permitAll()
                         .requestMatchers("/api/order/**").hasAnyRole("MEMBER", "ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/order-detail/**").hasAnyRole("MEMBER", "ADMIN")
-                        .requestMatchers( "/api/upload/**").permitAll()
+                        .requestMatchers("/api/upload/**").permitAll()
+                        .requestMatchers("/api/payment/**").hasRole("MEMBER")
                         .anyRequest().authenticated()) // Yêu cầu xác thực cho tất cả các yêu cầu còn lại
                 .httpBasic(Customizer.withDefaults());
         return httpSecurity.build();
