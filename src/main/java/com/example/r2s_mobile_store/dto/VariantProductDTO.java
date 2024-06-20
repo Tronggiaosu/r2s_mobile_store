@@ -9,4 +9,5 @@ public class VariantProductDTO {
     private String color;
     private String size;
     private float price;
+    private long quantity;
 }

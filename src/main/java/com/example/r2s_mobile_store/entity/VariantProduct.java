@@ -32,4 +32,7 @@ public class VariantProduct {
 
     @Column(name = "price")
     private float price;
+
+    @Column(name = "quantity")
+    private long quantity;
 }

@@ -145,6 +145,7 @@ public class ProductServiceImpl implements ProductService {
                 variantProduct.setMaterial(variantProductDTO.getMaterial());
                 variantProduct.setPrice(variantProductDTO.getPrice());
                 variantProduct.setSize(variantProductDTO.getSize());
+                variantProduct.setQuantity(variantProductDTO.getQuantity());
             } else {
                 // nếu variant product đó không có trong db thì thực hiện thêm nó vào db
                 variantProduct = new VariantProduct();
@@ -153,6 +154,7 @@ public class ProductServiceImpl implements ProductService {
                 variantProduct.setMaterial(variantProductDTO.getMaterial());
                 variantProduct.setPrice(variantProductDTO.getPrice());
                 variantProduct.setSize(variantProductDTO.getSize());
+                variantProduct.setQuantity(variantProductDTO.getQuantity());
             }
             updatedVariantProducts.add(variantProductRepository.save(variantProduct));
         }
